@@ -98,7 +98,7 @@ plot(res_SIR_boot,choice="lambdas_replic")
 plot(res_SIR_boot,choice="coefs_b")
 
 ## -----------------------------------------------------------------------------
-wine <-  read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data", header = FALSE) 
+wine <-  read.csv("https://gist.githubusercontent.com/Clement-W/26d99a28ab89929b6321f70a04535451/raw/169a36568d1fc7c5a7c508e8d3e720d5040744cd/wine.csv", header = FALSE) 
 colnames(wine) <- c('Type', 'Alcohol', 'Malic', 'Ash', 'Alcalinity', 'Magnesium', 
                     'Phenols', 'Flavanoids', 'Nonflavanoids', 'Proanthocyanins', 
                     'Color', 'Hue', 'Dilution', 'Proline')

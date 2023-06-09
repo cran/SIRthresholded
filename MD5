@@ -1,4 +1,4 @@
-7697ae38b0af5e1ba1cbccc8e0b8106a *DESCRIPTION
+3109f7f8659057536914f5df3e6ae1d6 *DESCRIPTION
 5f8a2a658daa94e6f3bfc9de552dcfd2 *NAMESPACE
 03d25ef02c6652041b23689e68e155e7 *R/SIR.R
 942c006db4fba50638247b3af58db47c *R/SIR_bootstrap.R
@@ -23,11 +23,11 @@ b11a0a9281928f891f83c70431850e0c *R/summary.SIR_threshold_opt.R
 a425dec08736ac29b48f138acefa6b3e *R/sysdata.rda
 07abc58a3531ac83c5dbe6278a67f976 *R/thresholding.R
 a74ec9e387c6f19fdc2f972402c31664 *R/utils.R
-7ce1efd6d344f945fc4a6e4a2dc8e192 *README.md
-cb16b2d330059362cf202435e78cec3b *build/vignette.rds
-e19d9513f3c4f344970714d5ccf0b767 *inst/doc/SIRthresholded.R
-5d5651d3ee6ba8674bfbe6e8428bbe00 *inst/doc/SIRthresholded.Rmd
-27008ee4fa40999da9fa9089f5931930 *inst/doc/SIRthresholded.html
+51af754acf30a788713afb39ed7e6f89 *README.md
+b08fc994d435eb4673ba6327bb5c953c *build/vignette.rds
+953ccb7804de9866d8eed7a09a86e454 *inst/doc/SIRthresholded.R
+f4b6824917e3b6611336df5ff9e7711d *inst/doc/SIRthresholded.Rmd
+b8aac7fcd435eddf997b2d775b43717e *inst/doc/SIRthresholded.html
 2065dd9a570a0cc929d7db30e8004a02 *man/SIR.Rd
 707ec4071454755d35b8d73e698b9b1c *man/SIR_bootstrap.Rd
 c1ea25a76988d22a9350d675be23b0a8 *man/SIR_threshold.Rd
@@ -38,4 +38,4 @@ bb59498e6e09bf98f008a690cd8eced4 *man/plot.SIR_bootstrap.Rd
 189e0a644ced54264f57b895bdcf82f4 *man/plot.SIR_threshold.Rd
 9db1dda00202f6147f554c112fb4688c *man/plot.SIR_threshold_bootstrap.Rd
 269201d726eae5ce1a4a39f0e1a17cc0 *man/plot.SIR_threshold_opt.Rd
-5d5651d3ee6ba8674bfbe6e8428bbe00 *vignettes/SIRthresholded.Rmd
+f4b6824917e3b6611336df5ff9e7711d *vignettes/SIRthresholded.Rmd

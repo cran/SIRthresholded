@@ -12,7 +12,7 @@
 
 <meta name="author" content="Clément Weinreich" />
 
-<meta name="date" content="2022-08-15" />
+<meta name="date" content="2023-06-09" />
 
 <title>How to use the SIRthresholded package</title>
 
@@ -110,13 +110,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -142,7 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">How to use the SIRthresholded package</h1>
 <h4 class="author">Clément Weinreich</h4>
-<h4 class="date">2022-08-15</h4>
+<h4 class="date">2023-06-09</h4>
 
 
 
@@ -651,8 +658,8 @@ H_\lambda(M)_{i,j}= \begin{cases}
 </ul>
 <div id="the-data" class="section level3">
 <h3>The data</h3>
-<p>For this example, we chose the wine dataset from the UCI machine learning repository (<a href="https://archive.ics.uci.edu/ml/datasets/Wine" class="uri">https://archive.ics.uci.edu/ml/datasets/Wine</a>). As explained on the page description of the dataset, these data are the results of a chemical analysis of wines grown in the same region in Italy. The analysis determined the quantities of 12 constituents found in the 178 samples of wine. Here, we’ll try to find the relevant variables in order to perform regression on the response variable Nonflavanoids according to the 12 other constituents. First, let’s load the dataset.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>) </span>
+<p>For this example, we chose the wine dataset from the UCI machine learning repository (the official link is not working anymore, please find another version of the dataset on that link <a href="https://gist.githubusercontent.com/tijptjik/9408623/raw/b237fa5848349a14a14e5d4107dc7897c21951f5/wine.csv" class="uri">https://gist.githubusercontent.com/tijptjik/9408623/raw/b237fa5848349a14a14e5d4107dc7897c21951f5/wine.csv</a>). As explained on the page description of the dataset, these data are the results of a chemical analysis of wines grown in the same region in Italy. The analysis determined the quantities of 12 constituents found in the 178 samples of wine. Here, we’ll try to find the relevant variables in order to perform regression on the response variable Nonflavanoids according to the 12 other constituents. First, let’s load the dataset.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">&quot;https://gist.githubusercontent.com/Clement-W/26d99a28ab89929b6321f70a04535451/raw/169a36568d1fc7c5a7c508e8d3e720d5040744cd/wine.csv&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>) </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(wine) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Type&#39;</span>, <span class="st">&#39;Alcohol&#39;</span>, <span class="st">&#39;Malic&#39;</span>, <span class="st">&#39;Ash&#39;</span>, <span class="st">&#39;Alcalinity&#39;</span>, <span class="st">&#39;Magnesium&#39;</span>, </span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;Phenols&#39;</span>, <span class="st">&#39;Flavanoids&#39;</span>, <span class="st">&#39;Nonflavanoids&#39;</span>, <span class="st">&#39;Proanthocyanins&#39;</span>, </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;Color&#39;</span>, <span class="st">&#39;Hue&#39;</span>, <span class="st">&#39;Dilution&#39;</span>, <span class="st">&#39;Proline&#39;</span>)</span>
@@ -904,7 +911,7 @@ H_\lambda(M)_{i,j}= \begin{cases}
 <div id="references" class="section level2">
 <h2>References</h2>
 <p>Duan, N., &amp; Li, K.-C. (1991). Slicing Regression : A Link-Free Regression Method. The Annals of Statistics, 19(2), 505‑530.</p>
-<p>Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [<a href="https://archive.ics.uci.edu/ml/" class="uri">https://archive.ics.uci.edu/ml/</a>]. Irvine, CA: University of California, School of Information and Computer Science.</p>
+<p>Dua, D. and Graff, C. (2019). UCI Machine Learning Repository. Irvine, CA: University of California, School of Information and Computer Science.</p>
 </div>
 
 
